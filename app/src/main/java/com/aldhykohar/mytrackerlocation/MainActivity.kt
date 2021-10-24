@@ -53,7 +53,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestPermission() {
         val permissionToRequest = mutableListOf<String>()
-        if (!hasLocationForegroundPermission()) permissionToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+        if (!hasLocationForegroundPermission()) {
+            permissionToRequest.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+            permissionToRequest.add(Manifest.permission.ACCESS_FINE_LOCATION)
+            permissionToRequest.add(Manifest.permission.ACCESS_NETWORK_STATE)
+        }
 
         if (permissionToRequest.isNotEmpty()) ActivityCompat.requestPermissions(
             this,

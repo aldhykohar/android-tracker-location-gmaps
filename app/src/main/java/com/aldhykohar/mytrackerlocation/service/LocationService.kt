@@ -11,6 +11,8 @@ import android.util.Log
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.aldhykohar.mytrackerlocation.MainActivity
 import com.aldhykohar.mytrackerlocation.R
+import com.aldhykohar.mytrackerlocation.utils.Constans.LOCATION
+import com.aldhykohar.mytrackerlocation.utils.Constans.LOCATION_TRACKER
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
@@ -35,7 +37,7 @@ class LocationService : Service() {
 
         const val ACTION_STOP_FOREGROUND_SERVICE = "ACTION_STOP_FOREGROUND_SERVICE"
 
-        private const val UPDATE_INTERVAL_IN_MILLISECONDS = (1000 * 24).toLong()
+        private const val UPDATE_INTERVAL_IN_MILLISECONDS = (1000 * 12).toLong()
         private const val FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
             UPDATE_INTERVAL_IN_MILLISECONDS / 2
 
@@ -43,7 +45,7 @@ class LocationService : Service() {
         val CHANNEL_NAME: CharSequence = "Malltronik"
     }
 
-    private var mLocationRequest: LocationRequest? = null
+    lateinit var mLocationRequest: LocationRequest
 
     private var mReference: DatabaseReference? = null
 
@@ -60,11 +62,11 @@ class LocationService : Service() {
     /**
      * Callback for changes in location.
      */
-    private var mLocationCallback: LocationCallback? = null
+    lateinit var mLocationCallback: LocationCallback
 
     private fun locationTracker() {
-        mReference = FirebaseDatabase.getInstance().getReference("location_tracker")
-            .child("list-location")
+        mReference = FirebaseDatabase.getInstance().getReference(LOCATION_TRACKER)
+            .child(LOCATION)
     }
 
     override fun onCreate() {
@@ -163,9 +165,9 @@ class LocationService : Service() {
      */
     private fun createLocationRequest() {
         mLocationRequest = LocationRequest()
-        mLocationRequest!!.interval = UPDATE_INTERVAL_IN_MILLISECONDS
-        mLocationRequest!!.fastestInterval = FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS
-        mLocationRequest!!.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        mLocationRequest.interval = UPDATE_INTERVAL_IN_MILLISECONDS
+        mLocationRequest.fastestInterval = FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS
+        mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
 
     private fun getLastLocation() {
