@@ -31,7 +31,7 @@ git clone https://github.com/aldhykohar/android-tracker-location-gmaps.git
 ```
 * change the present working directory
 ```markdown
-cd HacktoberFest2021
+cd android-tracker-location-gmaps
 ```
 * Add/Create your project to the specific folder as described in what you can contribute section.
 * Make a new branch
