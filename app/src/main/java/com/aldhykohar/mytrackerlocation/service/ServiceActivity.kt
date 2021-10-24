@@ -21,16 +21,22 @@ class ServiceActivity : AppCompatActivity() {
     private fun initClick() {
         with(binding) {
             mbStart.setOnClickListener {
-                Intent(this@ServiceActivity, MyIntentService::class.java).also {
-                    startService(it)
-                    tvServiceInfo.text = getString(R.string.service_running)
+                Intent(
+                    this@ServiceActivity,
+                    LocationService::class.java
+                ).also { service ->
+                    service.action = LocationService.ACTION_START_FOREGROUND_SERVICE
+                    tvServiceInfo.text = getString(R.string.service_stopped)
+                    startService(service)
                 }
             }
 
-            mbStop.setOnClickListener {
-                MyIntentService.stopService()
-                tvServiceInfo.text = getString(R.string.service_stopped)
-            }
+            /*mbStop.setOnClickListener {
+                Intent(this@ServiceActivity, LocationService::class.java).also {
+                    tvServiceInfo.text = getString(R.string.service_stopped)
+                    stopService(it)
+                }
+            }*/
         }
     }
 
