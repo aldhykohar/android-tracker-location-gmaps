@@ -26,7 +26,7 @@ class ServiceActivity : AppCompatActivity() {
                     LocationService::class.java
                 ).also { service ->
                     service.action = LocationService.ACTION_START_FOREGROUND_SERVICE
-                    tvServiceInfo.text = getString(R.string.service_stopped)
+                    tvServiceInfo.text = getString(R.string.service_running)
                     startService(service)
                 }
             }
@@ -38,10 +38,5 @@ class ServiceActivity : AppCompatActivity() {
                 }
             }*/
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        MyIntentService.stopService()
     }
 }
