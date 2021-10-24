@@ -1,6 +1,3 @@
-#  ❗️ This Project is no longer accepting PRs since the project is excluded from hacktoberfest. 
-# Thanks to everyone for contributing and we hope it was a good learning experience on open source for you all.
-
 # ✨ hacktoberfest2021 💫
 
 ![banner](https://hacktoberfest.digitalocean.com/_nuxt/img/logo-hacktoberfest-full.f42e3b1.svg)
@@ -15,9 +12,8 @@ https://hacktoberfest.digitalocean.com/</p>
 -----
 
 ### What can You contribute ⚠️ 
-* There are language Specific folders in the repository choose any you're comfortable with if not, make one.
-* Inside the language folder there will be multiple topic folders like Data Structures, Algorithms, Problems and projects.
-* Contribute any algorithm, data-structure implementation or your favourite problmes or projects.
+* There are the repository to traker location realtime from maps.
+* Contribute any algorithm, or new fetures.
 * Make sure your follow the below steps.
 -----
 
@@ -31,7 +27,7 @@ https://hacktoberfest.digitalocean.com/</p>
 * Fork the repository (Click the Fork button in the top right of this page, click your Profile Image)
 * Clone the forked repository to your local machine.
 ```markdown
-git clone https://github.com/your-username/HacktoberFest2021.git
+git clone https://github.com/aldhykohar/android-tracker-location-gmaps.git
 ```
 * change the present working directory
 ```markdown
