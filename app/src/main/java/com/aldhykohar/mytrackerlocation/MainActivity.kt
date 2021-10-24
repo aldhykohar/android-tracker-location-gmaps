@@ -4,6 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aldhykohar.mytrackerlocation.databinding.ActivityMainBinding
+import com.aldhykohar.mytrackerlocation.service.ServiceActivity
+import com.google.firebase.database.DatabaseReference
+
+import com.google.firebase.database.FirebaseDatabase
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +22,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initClick()
+
+        // Write a message to the database
+        // Write a message to the database
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("message")
+
+        myRef.setValue("Hello, World!")
     }
 
     private fun initClick() {
@@ -32,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(
                     Intent(
                         this@MainActivity,
-                        MapsActivity::class.java
+                        ServiceActivity::class.java
                     )
                 )
             }
