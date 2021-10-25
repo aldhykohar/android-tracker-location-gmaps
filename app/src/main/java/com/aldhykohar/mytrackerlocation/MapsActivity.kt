@@ -6,10 +6,12 @@ import com.aldhykohar.mytrackerlocation.databinding.ActivityMapsBinding
 import com.aldhykohar.mytrackerlocation.model.LocationModel
 import com.aldhykohar.mytrackerlocation.utils.Constans.LOCATION
 import com.aldhykohar.mytrackerlocation.utils.Constans.LOCATION_TRACKER
+import com.aldhykohar.mytrackerlocation.utils.UtilsFunction.getBitmapFromVectorDrawable
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -56,6 +58,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     userMarker = mMap.addMarker(
                         MarkerOptions().position(LatLng(location.latitude, location.longitude))
                             .title("Marker")
+                            .anchor(0.5.toFloat(), 0.5.toFloat())
+                            .icon(
+                                BitmapDescriptorFactory.fromBitmap(
+                                    getBitmapFromVectorDrawable(
+                                        R.drawable.ic_marker
+                                    )
+                                )
+                            )
                     )
                 }
             }
@@ -70,7 +80,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 location?.run {
                     userMarker?.moveMarkerSmoothly(
                         LatLng(location.latitude, location.longitude),
-                        false
+                        true
                     )
                     updateCameraMap(LatLng(this.latitude, this.longitude))
 
